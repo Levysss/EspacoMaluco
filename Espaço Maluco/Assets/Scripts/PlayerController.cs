@@ -5,14 +5,14 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speed = 5;
-    private Vector2 minhaPosicao;
+    
     private Rigidbody2D meuRb;
     
     // Start is called before the first frame update
     void Start()
     {
         meuRb = GetComponent<Rigidbody2D>();
-        minhaPosicao = transform.position;
+        
         
     }
 
@@ -27,9 +27,9 @@ public class PlayerController : MonoBehaviour
     {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
-        Vector2 minhaVelocidade = new Vector2(horizontal, vertical)*speed; 
+        Vector2 minhaMovimentacao = new Vector2(horizontal, vertical)*speed; 
 
-        meuRb.velocity = minhaVelocidade;
+        meuRb.velocity = minhaMovimentacao;
     }
     
 }
