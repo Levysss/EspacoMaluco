@@ -5,11 +5,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speed = 5;
-    [SerializeField] private Vector2 minhaPosicao;
+    private Vector3 minhaPosicao;
+    private Rigidbody2D meuRb;
     
     // Start is called before the first frame update
     void Start()
     {
+        meuRb = GetComponent<Rigidbody2D>();
         minhaPosicao = transform.position;
         
     }
@@ -27,25 +29,27 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             minhaPosicao.y = minhaPosicao.y + Time.deltaTime * speed;
-            transform.position = minhaPosicao;
+            meuRb.velocity = minhaPosicao;
         }
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             minhaPosicao.y = minhaPosicao.y + Time.deltaTime * -speed;
-            transform.position = minhaPosicao;
+            meuRb.velocity = minhaPosicao;
         }
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             minhaPosicao.x = minhaPosicao.x + Time.deltaTime * -speed;
-            transform.position = minhaPosicao;
+            meuRb.velocity = minhaPosicao;
         }
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             minhaPosicao.x = minhaPosicao.x + Time.deltaTime * speed;
-            transform.position = minhaPosicao;
+            meuRb.velocity = minhaPosicao;  
         }
         
         
         
     }
+
+    
 }
