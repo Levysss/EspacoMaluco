@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speed = 5;
-    private Vector3 minhaPosicao;
+    private Vector2 minhaPosicao;
     private Rigidbody2D meuRb;
     
     // Start is called before the first frame update
@@ -21,35 +21,15 @@ public class PlayerController : MonoBehaviour
     {
         Movimentacao();
     }
-    //metodo para movimentacao do nosso player
+    //metodo para movimentacao do nosso player diferenciado
+    
     void Movimentacao()
     {
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+        Vector2 minhaVelocidade = new Vector2(horizontal, vertical)*speed; 
 
-     
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
-        {
-            minhaPosicao.y = minhaPosicao.y + Time.deltaTime * speed;
-            meuRb.velocity = minhaPosicao;
-        }
-        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
-        {
-            minhaPosicao.y = minhaPosicao.y + Time.deltaTime * -speed;
-            meuRb.velocity = minhaPosicao;
-        }
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-        {
-            minhaPosicao.x = minhaPosicao.x + Time.deltaTime * -speed;
-            meuRb.velocity = minhaPosicao;
-        }
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-        {
-            minhaPosicao.x = minhaPosicao.x + Time.deltaTime * speed;
-            meuRb.velocity = minhaPosicao;  
-        }
-        
-        
-        
+        meuRb.velocity = minhaVelocidade;
     }
-
     
 }
