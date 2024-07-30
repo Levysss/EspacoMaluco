@@ -27,9 +27,9 @@ public class PlayerController : MonoBehaviour
     {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
-        Vector2 minhaMovimentacao = new Vector2(horizontal, vertical)*speed; 
-
-        meuRb.velocity = minhaMovimentacao;
+        Vector2 minhaMovimentacao = new Vector2(horizontal, vertical);
+        minhaMovimentacao.Normalize();
+        meuRb.velocity = minhaMovimentacao*speed;
     }
     
 }
