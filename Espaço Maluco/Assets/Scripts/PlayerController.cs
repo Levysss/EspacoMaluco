@@ -35,9 +35,9 @@ public class PlayerController : MonoBehaviour
     }
     void TomeBala()
     {
-        if (Input.GetKey(KeyCode.K))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            armaPosicao = transform.position + Vector3.up;
+            armaPosicao = transform.position + Vector3.up * 0.5f;
             Instantiate(bala,armaPosicao,Quaternion.identity);
         }
     }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class FireController : MonoBehaviour
 {
     [SerializeField] private float speed;
+    [SerializeField] private GameObject eu;
     private Rigidbody2D myRb;
     void Start()
     {
@@ -14,6 +15,15 @@ public class FireController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        alcance();
         myRb.velocity = Vector2.up*speed;
+    }
+    void alcance()
+    {
+        Vector3 posicao = transform.position;
+        if(posicao.y > 7)
+        {
+            Destroy(eu);
+        }
     }
 }
