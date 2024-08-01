@@ -5,9 +5,10 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speed = 5;
+    [SerializeField] private GameObject bala;
     
     private Rigidbody2D meuRb;
-    
+    private Vector3 armaPosicao;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Movimentacao();
+        TomeBala();
     }
     //metodo para movimentacao do nosso player diferenciado
     
@@ -30,6 +32,14 @@ public class PlayerController : MonoBehaviour
         Vector2 minhaMovimentacao = new Vector2(horizontal, vertical);
         minhaMovimentacao.Normalize();
         meuRb.velocity = minhaMovimentacao*speed;
+    }
+    void TomeBala()
+    {
+        if (Input.GetKey(KeyCode.K))
+        {
+            armaPosicao = transform.position + Vector3.up;
+            Instantiate(bala,armaPosicao,Quaternion.identity);
+        }
     }
     
 }
