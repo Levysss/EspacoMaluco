@@ -10,13 +10,14 @@ public class FireController : MonoBehaviour
     void Start()
     {
         myRb = GetComponent<Rigidbody2D>();
+        myRb.velocity = Vector2.up * speed;
     }
 
     // Update is called once per frame
     void Update()
     {
         alcance();
-        myRb.velocity = Vector2.up*speed;
+        
     }
     void alcance()
     {
