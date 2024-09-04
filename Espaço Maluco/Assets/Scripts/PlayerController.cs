@@ -7,8 +7,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed = 5;
     [SerializeField] private GameObject bala;
     
+    
     private Rigidbody2D meuRb;
     private Vector3 armaPosicao;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +37,7 @@ public class PlayerController : MonoBehaviour
     }
     void TomeBala()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetButtonDown("Fire1"))
         {
             armaPosicao = transform.position + Vector3.up * 0.5f;
             Instantiate(bala,armaPosicao,Quaternion.identity);
