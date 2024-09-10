@@ -6,8 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speed = 5;
     [SerializeField] private GameObject bala;
-    
-    
+
+    private float deley = 0.2f;
     private Rigidbody2D meuRb;
     private Vector3 armaPosicao;
 
@@ -37,10 +37,18 @@ public class PlayerController : MonoBehaviour
     }
     void TomeBala()
     {
-        if (Input.GetButtonDown("Fire1"))
+        
+
+        if (Input.GetButton("Fire1"))
         {
-            armaPosicao = transform.position + Vector3.up * 0.5f;
-            Instantiate(bala,armaPosicao,Quaternion.identity);
+            deley = deley - Time.deltaTime;
+            if (deley <= 0)
+            {
+                armaPosicao = transform.position + Vector3.up * 0.5f;
+                Instantiate(bala, armaPosicao, Quaternion.identity);
+                deley = 0.2f;
+            }
+            
         }
     }
     

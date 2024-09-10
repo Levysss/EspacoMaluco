@@ -25,11 +25,17 @@ public class FireController : MonoBehaviour
             transform.up = direction;
 
             myRb.velocity = new Vector2(alvo.transform.position.x - transform.position.x, alvo.transform.position.y - transform.position.y );
-        */
+        
             //guardando a direcao de onde esta o player
             Vector2 direction = alvo.transform.position - transform.position;
 
             transform.rotation = Quaternion.LookRotation(direction);
+            */
+            Vector2 direction = new Vector2(transform.position.x - alvo.transform.position.x, transform.position.y - alvo.transform.position.y);
+
+            transform.up = direction;
+            direction = direction.normalized;
+            myRb.velocity = -direction * speed;
         }
     }
     private void FixedUpdate()
@@ -59,6 +65,7 @@ public class FireController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
         Destroy(eu);
     }
 }

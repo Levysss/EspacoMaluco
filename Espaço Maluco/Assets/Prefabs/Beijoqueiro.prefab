@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 706243169988463622}
   - component: {fileID: 1079880923673394886}
   - component: {fileID: 5932091930103073100}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Beijoqueiro
   m_TagString: Bejoqueiro
   m_Icon: {fileID: 0}
@@ -195,7 +195,7 @@ GameObject:
   - component: {fileID: 8998217362497626135}
   - component: {fileID: 7713607350112674727}
   - component: {fileID: 4965935048119953359}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Alien_1_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}

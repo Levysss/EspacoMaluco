@@ -91,17 +91,28 @@ public class AlienController : MonoBehaviour
     }
     void Atirador()
     {
-        if (eu.CompareTag("Zoiudo"))
+        if (checarVisibilidade())
         {
-            Vector3 armaPosicao = transform.position + Vector3.down * 1f;
-            deley = deley - Time.deltaTime;
-            if (deley<=0)
+            if (eu.CompareTag("Zoiudo"))
             {
-                Instantiate(meuTiro, armaPosicao, Quaternion.identity);
-                deley = 1f;
+                Vector3 armaPosicao = transform.position + Vector3.down * 1f;
+                deley = deley - Time.deltaTime;
+                if (deley <= 0)
+                {
+                    Instantiate(meuTiro, armaPosicao, Quaternion.identity);
+                    deley = 1f;
+                }
+
             }
-            
         }
+        
     }
+
+    bool checarVisibilidade()
+    {
+        bool visivel = GetComponentInChildren<SpriteRenderer>().isVisible;
+        return visivel;
+    }
+
 }
 
