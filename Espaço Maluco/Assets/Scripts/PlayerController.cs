@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speed = 5;
     [SerializeField] private GameObject bala;
+    [SerializeField] private int vida = 5;
 
     private float deley = 0.2f;
     private Rigidbody2D meuRb;
@@ -51,5 +53,22 @@ public class PlayerController : MonoBehaviour
             
         }
     }
-    
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Bejoqueiro")) {
+            vida = vida;
+
+        }
+        else
+        {
+            vida--;
+        }
+        
+        if(vida <= 0)
+        {
+            SceneManager.LoadScene("Game");
+        }
+    }
+
 }

@@ -31,11 +31,11 @@ public class FireController : MonoBehaviour
 
             transform.rotation = Quaternion.LookRotation(direction);
             */
-            Vector2 direction = new Vector2(transform.position.x - alvo.transform.position.x, transform.position.y - alvo.transform.position.y);
+            Vector2 direction = new Vector2(alvo.transform.position.x - transform.position.x  , alvo.transform.position.y - transform.position.y);
 
             transform.up = direction;
             direction = direction.normalized;
-            myRb.velocity = -direction * speed;
+            myRb.velocity = direction * speed;
         }
     }
     private void FixedUpdate()
