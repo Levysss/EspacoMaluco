@@ -7,6 +7,7 @@ TagManager:
   - Bala
   - Bejoqueiro
   - Zoiudo
+  - Parede
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - Inimigo
   - BalaInimigo
   - BalaPlayer
-  - 
+  - Parede
   - 
   - 
   - 
