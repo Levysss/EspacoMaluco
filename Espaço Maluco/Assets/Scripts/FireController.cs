@@ -7,6 +7,7 @@ public class FireController : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private GameObject eu;
     [SerializeField] private GameObject portador;
+    [SerializeField] private GameObject inpacto;
     [SerializeField] private PlayerController alvo;
     private Rigidbody2D myRb;
     void Start()
@@ -49,23 +50,23 @@ public class FireController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (eu.CompareTag("Player"))
+        
+
+        //se a bala n tiver visivel apaque!!!
+        bool visivel = GetComponentInChildren<SpriteRenderer>().isVisible;
+        if (visivel == false)
         {
-            alcance();
+            Destroy(gameObject);
         }
+        
     }
-    void alcance()
-    {
-        Vector3 posicao = transform.position;
-        if(posicao.y > 7)
-        {
-            Destroy(eu);
-        }
-    }
+    
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         
-        Destroy(eu);
+        Instantiate(inpacto,transform.position, transform.rotation);
+
+        Destroy(gameObject);
     }
 }

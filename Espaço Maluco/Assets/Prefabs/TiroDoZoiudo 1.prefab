@@ -161,6 +161,7 @@ MonoBehaviour:
   speed: 7
   eu: {fileID: 8373376826474934864}
   portador: {fileID: 7937985547749687293, guid: 1d40296c168d2544d8650da8e498d13d, type: 3}
+  inpacto: {fileID: 7627778322030154460, guid: dc6115f1964167048acf2de430870029, type: 3}
   alvo: {fileID: 3094800941045259838, guid: 2cd857705703b81498dc0d113cd968ff, type: 3}
 --- !u!61 &2553548654883449371
 BoxCollider2D:
