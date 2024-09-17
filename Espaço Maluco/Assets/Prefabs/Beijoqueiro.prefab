@@ -55,7 +55,6 @@ MonoBehaviour:
   vida: 100
   animator: {fileID: 4965935048119953359}
   meuTiro: {fileID: 0}
-  deley: 2
 --- !u!61 &4696788308956735303
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -88,7 +87,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0147899985, y: -0.035702825}
+  m_Offset: {x: 0.0041101873, y: -0.033109874}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -99,7 +98,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.62268174, y: 1.6551273}
+  m_Size: {x: 0.6107282, y: 1.6770117}
   m_EdgeRadius: 0
 --- !u!50 &706243169988463622
 Rigidbody2D:
@@ -160,8 +159,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0031343102, y: -0.24134004}
-  m_Size: {x: 0.2304514, y: 1.1567142}
+  m_Offset: {x: 0.0031343102, y: -0.15749216}
+  m_Size: {x: 0.2304514, y: 1.282486}
   m_Direction: 0
 --- !u!95 &5932091930103073100
 Animator:

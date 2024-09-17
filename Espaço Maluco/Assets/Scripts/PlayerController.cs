@@ -1,17 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speed = 5;
     [SerializeField] private GameObject bala;
-    [SerializeField] private int vida = 5;
-    
+    [SerializeField] private int vida = 100;
 
+    //Variaveis de Pontos e de Vida em texto
+    [SerializeField] private TextMeshProUGUI vidaText;
+    [SerializeField] private TextMeshProUGUI pontosText;
+
+    private int pontos;
     private Animator[] animacao;
     private float deley = 0.2f;
     private Rigidbody2D meuRb;
@@ -29,11 +35,15 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Movimentacao();
+        atualizarInterface();
         TomeBala();
     }
+    private void FixedUpdate()
+    {
+        Movimentacao();
+    }
     //metodo para movimentacao do nosso player diferenciado
-    
+
     void Movimentacao()
     {
         float horizontal = Input.GetAxis("Horizontal");
@@ -68,13 +78,27 @@ public class PlayerController : MonoBehaviour
         else
         {
             this.animacao[0].SetTrigger("RecebendoDano");
-            vida--;
+            vida -= 10;
         }
         
         if(vida <= 0)
         {
-            SceneManager.LoadScene("Game");
+            SceneManager.LoadScene("Over");
         }
     }
 
+    public void pegarPontos(int pontos)
+    {
+        this.pontos += pontos;
+    }
+
+    void atualizarInterface()
+    {
+        vidaText.text = "Vida: " + vida.ToString();
+        pontosText.text ="Pontos: " + pontos.ToString();
+    }
+    public int getPontos()
+    {
+    return pontos; 
+    }
 }

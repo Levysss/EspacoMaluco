@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class AlienController : MonoBehaviour
 {
+
     [SerializeField] private GameObject eu;
     [SerializeField] private PlayerController alvo;
     [SerializeField] private float speed = 8;
     [SerializeField] private int vida = 100;
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject meuTiro;
-    public float deley = 1f;
+    
+    private float deley = 1f;
     private PlayerController player;
     
     // Start is called before the first frame update
@@ -24,36 +26,43 @@ public class AlienController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Movimentacao();
+        
         Atirador();
     }
+    private void FixedUpdate()
+    {
+        Movimentacao();
+    }
+
     //movimentação
     void Movimentacao()
     {
         Visao();
+
         //verificando se estou encostando no player
         if (transform.position != alvo.transform.position)
         {
             //se verdadeiro segnifica q nao estamos mili
             if (alvo.transform.position.x < transform.position.x)
             {
-                transform.position -= Vector3.right * Time.deltaTime * speed;
+                transform.position -= Vector3.right * Time.fixedDeltaTime * speed;
             }
             if (alvo.transform.position.x > transform.position.x)
             {
-                transform.position -= Vector3.left * Time.deltaTime * speed;
+                transform.position -= Vector3.left * Time.fixedDeltaTime * speed;
             }
             if (alvo.transform.position.y < transform.position.y)
             {
-                transform.position -= Vector3.up * Time.deltaTime * speed;
+                transform.position -= Vector3.up * Time.fixedDeltaTime * speed;
             }
             if (alvo.transform.position.y > transform.position.y)
             {
-                transform.position -= Vector3.down * Time.deltaTime * speed;
+                transform.position -= Vector3.down * Time.fixedDeltaTime * speed;
             }
         }
         
     }
+
     void Visao()
     {
         //movimentacao da visao
@@ -76,6 +85,7 @@ public class AlienController : MonoBehaviour
             
             this.animator.SetTrigger("recebendoDano");
         }
+        
     }
     void RecebaDano(int dano)
     {
@@ -87,6 +97,7 @@ public class AlienController : MonoBehaviour
     }
     void Morra()
     {
+        alvo.pegarPontos(20);
         Destroy(eu);
     }
     void Atirador()
