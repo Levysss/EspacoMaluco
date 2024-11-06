@@ -49,7 +49,7 @@ MonoBehaviour:
   eu: {fileID: 7937985547749687293}
   alvo: {fileID: 0}
   speed: 0.5
-  vida: 100
+  vida: 75
   animator: {fileID: 796164942137901958}
   meuTiro: {fileID: 8373376826474934864, guid: 54a33724f73155f4ba9032838c214e5c, type: 3}
 --- !u!61 &1288780297385264176

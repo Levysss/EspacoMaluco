@@ -16,12 +16,17 @@ public class PlayerController : MonoBehaviour
     //Variaveis de Pontos e de Vida em texto
     [SerializeField] private TextMeshProUGUI vidaText;
     [SerializeField] private TextMeshProUGUI pontosText;
+    [SerializeField] private TextMeshProUGUI record;
+
+    [SerializeField] private AudioClip tiroSom;
 
     private int pontos;
     private Animator[] animacao;
-    private float deley = 0.2f;
+    private float deley = 0.01f;
     private Rigidbody2D meuRb;
     private Vector3 armaPosicao;
+    private int scoreMaximoo;
+    private string nomeCena;
 
     // Start is called before the first frame update
     void Start()
@@ -29,12 +34,22 @@ public class PlayerController : MonoBehaviour
         
         meuRb = GetComponent<Rigidbody2D>();
         animacao = GetComponentsInChildren<Animator>();
+        nomeCena = SceneManager.GetActiveScene().name;
+        if (PlayerPrefs.HasKey(nomeCena + "score"))
+        {
+            scoreMaximoo = PlayerPrefs.GetInt(nomeCena + "score");
+        }
         
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            PlayerPrefs.DeleteKey(nomeCena + "score");
+            SceneManager.LoadScene("Game");
+        }
         atualizarInterface();
         TomeBala();
     }
@@ -58,14 +73,14 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButton("Fire1"))
         {
+            //AudioSource.PlayClipAtPoint(tiroSom,armaPosicao);
             deley = deley - Time.deltaTime;
             if (deley <= 0)
             {
                 armaPosicao = transform.position + Vector3.up * 0.5f;
                 Instantiate(bala, armaPosicao, Quaternion.identity);
                 deley = 0.2f;
-            }
-            
+            } 
         }
     }
 
@@ -83,7 +98,8 @@ public class PlayerController : MonoBehaviour
         
         if(vida <= 0)
         {
-            SceneManager.LoadScene("Over");
+            scoreMaximo();
+            SceneManager.LoadScene("Game");
         }
     }
 
@@ -96,9 +112,17 @@ public class PlayerController : MonoBehaviour
     {
         vidaText.text = "Vida: " + vida.ToString();
         pontosText.text ="Pontos: " + pontos.ToString();
+        record.text = "Record: " + scoreMaximoo.ToString();
     }
-    public int getPontos()
+    void scoreMaximo()
     {
-    return pontos; 
+        
+        if (pontos > scoreMaximoo)
+        {
+            scoreMaximoo = pontos;
+            PlayerPrefs.SetInt(nomeCena+"score",scoreMaximoo);
+            record.text = "Record: " + scoreMaximoo.ToString();
+        }
     }
+    
 }
